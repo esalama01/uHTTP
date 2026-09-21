@@ -3,7 +3,7 @@ package main
 import(
 	//"golang.org/x/sys/unix"
 	//"log"
-	"fmt"
+	"uHTTP/src"
 	"time"
 )
 
@@ -16,7 +16,7 @@ func main(){
 	defer unix.Close(fd)
 	*/
 	for {
-		fmt.Println("Listening for incoming conn..")
+		src.S_conn()
 		time.Sleep(1 * time.Second)
 	}
 }

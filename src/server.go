@@ -1,4 +1,4 @@
-package main
+package src
 
 import(
 	"net"
@@ -7,7 +7,7 @@ import(
 	"io"
 )
 
-func main(){
+func S_conn(){
 	listener, err := net.Listen("tcp", ":8989")
 	if err != nil{
 		fmt.Println("Error Listening: ",err)
