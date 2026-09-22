@@ -26,7 +26,10 @@ func S_conn(){
 
 func handleConnection(conn net.Conn){
 	defer conn.Close()
-
+	addr := conn.RemoteAddr()
+	addr_type := addr.Network()
+	addr_name := addr.String()
+	/*
 	reader := bufio.NewReader(conn)
 	for {
 		bytes, err := reader.ReadBytes(byte('\n'))
@@ -45,4 +48,5 @@ func handleConnection(conn net.Conn){
 			return
 		}
 	}
+	*/
 }

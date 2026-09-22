@@ -1,8 +1,8 @@
 package main
 
 import(
-	//"golang.org/x/sys/unix"
-	//"log"
+	"exec"
+	"os"
 	"uHTTP/src"
 	"time"
 )
@@ -15,8 +15,11 @@ func main(){
 	}
 	defer unix.Close(fd)
 	*/
-	for {
-		src.S_conn()
-		time.Sleep(1 * time.Second)
-	}
+	serverCmd := exec.Command("go", "run", "server.go")
+	serverCmd.Stdout = os.Stdout
+	serverCmd.Stderr = os.Stderr
+	
+	src.S_conn()
+	time.Sleep(1 * time.Second)
+	
 }
