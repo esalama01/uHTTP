@@ -1,10 +1,9 @@
 package main
 
 import(
-	"exec"
-	"os"
+	//"exec"
 	"uHTTP/src"
-	"time"
+	//"time"
 )
 
 func main(){
@@ -15,11 +14,5 @@ func main(){
 	}
 	defer unix.Close(fd)
 	*/
-	serverCmd := exec.Command("go", "run", "server.go")
-	serverCmd.Stdout = os.Stdout
-	serverCmd.Stderr = os.Stderr
-	
 	src.S_conn()
-	time.Sleep(1 * time.Second)
-	
 }

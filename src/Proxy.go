@@ -3,7 +3,7 @@ package src
 import(
 	"net"
 	"fmt"
-	"bufio"
+	//"bufio"
 	"io"
 )
 
@@ -26,9 +26,14 @@ func S_conn(){
 
 func handleConnection(conn net.Conn){
 	defer conn.Close()
+	fmt.Println("HOLA")
 	addr := conn.RemoteAddr()
 	addr_type := addr.Network()
 	addr_name := addr.String()
+	_, err := io.ReadAll(conn)
+	if err != nil{
+			fmt.Println("Error Reading: ",err)
+		}
 	C_conn(addr_type, addr_name)
 	/*
 	reader := bufio.NewReader(conn)
