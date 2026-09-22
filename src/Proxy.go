@@ -29,6 +29,7 @@ func handleConnection(conn net.Conn){
 	addr := conn.RemoteAddr()
 	addr_type := addr.Network()
 	addr_name := addr.String()
+	C_conn(addr_type, addr_name)
 	/*
 	reader := bufio.NewReader(conn)
 	for {
@@ -49,4 +50,17 @@ func handleConnection(conn net.Conn){
 		}
 	}
 	*/
+}
+
+func C_conn(a_type string, a_name string) {
+	conn, err := net.Dial(a_type, a_name)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer conn.Close()
+	conn.Write([]byte("Hello, server"))
+	buffer := make([]byte, 1024)
+	conn.Read(buffer)
+	fmt.Println(string(buffer))
 }
