@@ -20,17 +20,16 @@ func S_conn(){
 		if err != nil{
 			fmt.Println("Error Accepting: ",err)
 		}
-		go handleConnection(conn)
+		handleConnection(conn)
 	}
 }
 
 func handleConnection(conn net.Conn){
 	defer conn.Close()
-	fmt.Println("HOLA")
 	addr := conn.RemoteAddr()
 	addr_type := addr.Network()
 	addr_name := addr.String()
-	_, err := io.ReadAll(conn)
+	data, err := io.ReadAll(conn)
 	if err != nil{
 			fmt.Println("Error Reading: ",err)
 		}
